@@ -123,5 +123,54 @@ int main(int argc, char *argv[])
 	else
 		prn(0);
 
+
+		write(STDOUT_FILENO,"User has read permission on directory:",sizeof("User has read permission on directory:")-1);
+		if(check_dir.st_mode & S_IRUSR)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"User has write permission on directory:",sizeof("User has write permission on directory:")-1);
+		if(check_dir.st_mode & S_IWUSR)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"User has execute permission on directory:",sizeof("User has execute permission on directory:")-1);
+		if(check_dir.st_mode & S_IXUSR)
+			prn(1);
+		else
+			prn(0);
+
+		write(STDOUT_FILENO,"Group has read permission on directory:",sizeof("Group has read permission on directory:")-1);
+		if(check_dir.st_mode & S_IRGRP)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"Group has write permission on directory:",sizeof("Group has write permission on directory:")-1);
+		if(check_dir.st_mode & S_IWGRP)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"Group has execute permission on directory:",sizeof("Group has execute permission on directory:")-1);
+		if(check_dir.st_mode & S_IXGRP)
+			prn(1);
+		else
+			prn(0);
+
+		write(STDOUT_FILENO,"Others has read permission on directory:",sizeof("Others has read permission on directory:")-1);
+		if(check_dir.st_mode & S_IROTH)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"Others has write permission on directory:",sizeof("Others has write permission on directory:")-1);
+		if(check_dir.st_mode & S_IWOTH)
+			prn(1);
+		else
+			prn(0);
+		write(STDOUT_FILENO,"Others has execute permission on directory:",sizeof("Others has execute permission on directory:")-1);
+		if(check_dir.st_mode & S_IXOTH)
+			prn(1);
+		else
+			prn(0);
+
 	exit(0);
 }
