@@ -23,8 +23,8 @@ char buf1,buf2;
 
 int main(int argc, char *argv[])
 {
-  int fd2,fd1,siz;
-  struct stat check_file, check_dir, check_sym ;
+	int fd2,fd1,siz;
+	struct stat check_file, check_dir, check_sym ;
 	char dir[]="Assignment", oldpath[]="Assignment/Answer.txt", newpath[]="Answer.txt";
 	symlink(oldpath,newpath);
 
@@ -51,23 +51,22 @@ int main(int argc, char *argv[])
 
 	int flag = 1;
 
-  siz = lseek(fd1, (off_t) 0, SEEK_END);
+	siz = lseek(fd1, (off_t) 0, SEEK_END);
 	for(int i = siz - 1; i >= 1; i--)
 	{
 		lseek(fd1, (off_t) i, SEEK_SET);
-    lseek(fd2, (off_t) siz-i, SEEK_SET);
+		lseek(fd2, (off_t) siz-i, SEEK_SET);
 		int n = read(fd1, &buf1, 1);
-    n = read(fd2, &buf2, 1);
-		//printf("%c%c",buf1,buf2 );
+		n = read(fd2, &buf2, 1);
 
 
 		if(buf1 >= 'a' && buf1 <='z')
 			buf1 += ('A'-'a');
 		else if(buf1 >='A' && buf1 <= 'Z')
 			buf1 += ('a'-'A');
-
-    if(buf1!=buf2)
-      flag = 0;
+		printf("%c%c\n ", buf1,buf2);
+		if(buf1!=buf2)
+			flag = 0;
 	}
 
 	write(STDOUT_FILENO,"Checking whether file contents have been reversed and case-inverted:",sizeof("Checking whether file contents have been reversed and case-inverted:")-1);
