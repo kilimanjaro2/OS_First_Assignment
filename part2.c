@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 		prn(1);
 	else
 		prn(0);
-
+	//Using one character less because of difference in last charcter arising due to save file
 
 		write(STDOUT_FILENO,"User has read permission on directory:",sizeof("User has read permission on directory:")-1);
 		if(check_dir.st_mode & S_IRUSR)
